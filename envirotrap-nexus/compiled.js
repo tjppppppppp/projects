@@ -28,12 +28,12 @@ const {
 
 // ─── PALETTE ──────────────────────────────────────────────────────────────────
 const PAL = {
-  navy: '#1e3a5f',
+  navy: '#13294b',
   navyMid: '#2d5a8e',
   navyLight: '#3b6fae',
-  cream: '#f8f5ee',
-  creamDark: '#f0e8d5',
-  border: '#e4d5b5',
+  cream: '#f2f5f8',
+  creamDark: '#e8eef4',
+  border: '#dce5ed',
   teal: '#2d6a4f',
   tealLight: '#66b089',
   amber: '#e9a825',
@@ -1601,16 +1601,7 @@ const USING_REAL_ROUTES = REAL_ROUTES.length > 0;
 // ─── SHARED COMPONENTS ────────────────────────────────────────────────────────
 function DemoBanner() {
   return /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: 'repeating-linear-gradient(45deg,#e9a825,#e9a825 10px,#f5b820 10px,#f5b820 20px)',
-      padding: '6px 0',
-      textAlign: 'center',
-      fontSize: 11,
-      fontWeight: 700,
-      color: '#78350f',
-      letterSpacing: '.08em',
-      textTransform: 'uppercase'
-    }
+    className: "demo-banner"
   }, "DEMO DATA - NOT ACTUAL UIUC OPERATIONAL RECORDS \xA0|\xA0 Attribution model trained on real LoadMan data");
 }
 function Badge({
@@ -1639,6 +1630,7 @@ function SH({
       gap: 8
     }
   }, /*#__PURE__*/React.createElement("h2", {
+    className: "section-title",
     style: {
       margin: 0,
       fontSize: 20,
@@ -2027,7 +2019,7 @@ function ScannerObservationsPanel({
         borderRadius: 6,
         fontSize: 12,
         color: PAL.muted,
-        border: '1px solid #e4d5b5'
+        border: '1px solid #dce5ed'
       }
     }, /*#__PURE__*/React.createElement("span", {
       className: "badge badge-purple",
@@ -2040,7 +2032,7 @@ function ScannerObservationsPanel({
         padding: '10px 14px',
         background: '#f7f8fa',
         borderRadius: 6,
-        border: '1px solid #e4d5b5'
+        border: '1px solid #dce5ed'
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -2142,7 +2134,7 @@ function ScannerObservationsPanel({
       color: '#92400e',
       marginBottom: 10
     }
-  }, "⚠ SQLite storage on Hugging Face free tier is ", /*#__PURE__*/React.createElement("strong", null, "temporary"), " — observations are lost when the Space restarts. Export a CSV backup before closing a session and re-import it afterwards to preserve your records."), obs.length === 0 ? /*#__PURE__*/React.createElement("div", {
+  }, "SQLite storage on Hugging Face free tier is ", /*#__PURE__*/React.createElement("strong", null, "temporary"), " — observations are lost when the Space restarts. Export a CSV backup before closing a session and re-import it afterwards to preserve your records."), obs.length === 0 ? /*#__PURE__*/React.createElement("div", {
     style: {
       padding: '16px',
       textAlign: 'center',
@@ -2157,7 +2149,7 @@ function ScannerObservationsPanel({
       padding: '10px 14px',
       background: '#f7f8fa',
       borderRadius: 6,
-      border: '1px solid #e4d5b5'
+      border: '1px solid #dce5ed'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2185,7 +2177,7 @@ function ScannerObservationsPanel({
   }, mat), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
-      background: '#e4d5b5',
+      background: '#dce5ed',
       borderRadius: 4,
       height: 8
     }
@@ -3913,11 +3905,7 @@ function CollectionLog() {
     }, 2500);
   }
   return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 16,
-      maxWidth: 580,
-      margin: '0 auto'
-    }
+    className: "workflow-page"
   }, /*#__PURE__*/React.createElement(SH, {
     title: "Collection Log",
     sub: "Driver interface — demo routes shown below are synthetic examples, not actual F&S route assignments."
@@ -3982,16 +3970,11 @@ function CollectionLog() {
       fontWeight: 600
     }
   }, r.label)))), /*#__PURE__*/React.createElement("div", {
-    className: "card",
-    style: {
-      padding: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 14
-    }
+    className: "card workflow-card"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "pickup-section"
+  }, /*#__PURE__*/React.createElement("h3", null, "Route & location"), /*#__PURE__*/React.createElement("div", {
+    className: "pickup-grid"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: {
       fontSize: 13,
@@ -4033,7 +4016,7 @@ function CollectionLog() {
       color: PAL.amberDark,
       marginTop: 3
     }
-  }, "⚠ Demo route — not an actual F&S assignment.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+  }, "Demo route — not an actual F&S assignment.")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: {
       fontSize: 13,
       fontWeight: 600,
@@ -4116,12 +4099,10 @@ function CollectionLog() {
   }, "Select container..."), availableContainers.map(c => /*#__PURE__*/React.createElement("option", {
     key: c,
     value: c
-  }, c)))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gap: 10
-    }
+  }, c)))))), /*#__PURE__*/React.createElement("section", {
+    className: "pickup-section"
+  }, /*#__PURE__*/React.createElement("h3", null, "Pickup details"), /*#__PURE__*/React.createElement("div", {
+    className: "pickup-grid pickup-metrics"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: {
       fontSize: 13,
@@ -4225,7 +4206,9 @@ function CollectionLog() {
       fontSize: 12,
       marginTop: 3
     }
-  }, errors.stream)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+  }, errors.stream))), /*#__PURE__*/React.createElement("section", {
+    className: "pickup-section"
+  }, /*#__PURE__*/React.createElement("h3", null, "Notes & flags"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     style: {
       fontSize: 13,
       fontWeight: 600,
@@ -4268,11 +4251,8 @@ function CollectionLog() {
       resize: 'vertical',
       fontFamily: 'inherit'
     }
-  })), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 10
-    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "pickup-actions"
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-primary",
     onClick: sub,
@@ -4298,7 +4278,7 @@ function CollectionLog() {
       });
       setErrors({});
     }
-  }, "Clear")))), /*#__PURE__*/React.createElement("div", {
+  }, "Clear"))), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 10,
       padding: '8px 12px',
@@ -4355,7 +4335,7 @@ function CollectionLog() {
       borderRadius: 5,
       border: `1px solid ${PAL.amber}`
     }
-  }, "⚠ Device-local prototype storage only. Entries are saved in this browser only — not shared with other devices, users, or university systems. Export CSV regularly to preserve records."), logs.map(l => /*#__PURE__*/React.createElement("div", {
+  }, "Device-local prototype storage only. Entries are saved in this browser only — not shared with other devices, users, or university systems. Export CSV regularly to preserve records."), logs.map(l => /*#__PURE__*/React.createElement("div", {
     key: l.id,
     className: "card",
     style: {
@@ -5997,7 +5977,7 @@ function AIScannerModule() {
     }, isTop ? '* ' : '', result.material), /*#__PURE__*/React.createElement("div", {
       style: {
         flex: 1,
-        background: '#e4d5b5',
+        background: '#dce5ed',
         borderRadius: 4,
         height: 10,
         overflow: 'hidden'
@@ -6022,20 +6002,12 @@ function AIScannerModule() {
     }, result.score.toFixed(4)));
   }
   if (apiStatus === 'offline') return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24
-    }
+    className: "workflow-page"
   }, /*#__PURE__*/React.createElement(SH, {
     title: "AI Waste Scanner",
     sub: "CLIP ViT-B/32 zero-shot waste material classifier"
   }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: '#f0f4fa',
-      border: '1px solid #abc1df',
-      borderRadius: 8,
-      padding: 24,
-      maxWidth: 560
-    }
+    className: "card workflow-card scanner-offline"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -6043,27 +6015,25 @@ function AIScannerModule() {
       gap: 10,
       marginBottom: 12
     }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 22
-    }
-  }, "📷"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(NexusIcon, {
+    name: "scanner"
+  }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontWeight: 700,
       color: PAL.navy,
       fontSize: 15
     }
-  }, "AI Scanner - Coming Soon")), /*#__PURE__*/React.createElement("p", {
+  }, "Scanner service unavailable")), /*#__PURE__*/React.createElement("p", {
     style: {
       margin: '0 0 12px',
       fontSize: 14,
       color: PAL.text,
       lineHeight: 1.6
     }
-  }, "The EnviroTrap AI Scanner is currently available in our local demonstration environment. Public access to AI-powered waste classification is coming soon."), /*#__PURE__*/React.createElement("div", {
+  }, "Photo classification requires a connection to the scanner service."), /*#__PURE__*/React.createElement("div", {
     style: {
       background: 'white',
-      border: '1px solid #e4d5b5',
+      border: '1px solid #dce5ed',
       borderRadius: 6,
       padding: '10px 14px'
     }
@@ -6092,9 +6062,7 @@ function AIScannerModule() {
     }
   }, "All other EnviroTrap Nexus modules are fully available above.")));
   if (apiStatus === 'checking') return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24
-    }
+    className: "workflow-page"
   }, /*#__PURE__*/React.createElement(SH, {
     title: "AI Waste Scanner",
     sub: "CLIP ViT-B/32 zero-shot waste material classifier"
@@ -6105,9 +6073,7 @@ function AIScannerModule() {
     }
   }, "Connecting to AI service..."));
   return /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: 24
-    }
+    className: "workflow-page"
   }, /*#__PURE__*/React.createElement(SH, {
     title: "AI Waste Scanner",
     sub: "CLIP ViT-B/32 zero-shot classifier. Similarity scores are cosine similarities - NOT probabilities or recyclability assessments."
@@ -6139,25 +6105,10 @@ function AIScannerModule() {
   }, "CLIP ViT-B/32"), /*#__PURE__*/React.createElement("span", {
     className: "badge badge-amber"
   }, "AI-Inferred scores")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gap: 16,
-      marginBottom: 16
-    }
+    className: "scanner-grid"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "card",
-    style: {
-      padding: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontWeight: 700,
-      fontSize: 14,
-      color: PAL.navy,
-      marginBottom: 12
-    }
-  }, "Step 1 - Select building and upload photo"), /*#__PURE__*/React.createElement("div", {
+    className: "card workflow-card"
+  }, /*#__PURE__*/React.createElement("h3", null, "Upload a waste photo"), /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 12
     }
@@ -6192,27 +6143,18 @@ function AIScannerModule() {
     }
   }, "PHOTO (JPG or PNG)"), /*#__PURE__*/React.createElement("input", {
     ref: fileInputRef,
+    className: "scanner-file",
     type: "file",
     accept: "image/jpeg,image/jpg,image/png",
-    onChange: handleFile,
-    style: {
-      padding: '6px 8px',
-      fontSize: 13
-    }
+    onChange: handleFile
   })), preview && /*#__PURE__*/React.createElement("div", {
     style: {
       marginBottom: 12
     }
   }, /*#__PURE__*/React.createElement("img", {
     src: preview,
-    alt: "preview",
-    style: {
-      maxWidth: '100%',
-      maxHeight: 160,
-      borderRadius: 6,
-      border: '1px solid #e4d5b5',
-      display: 'block'
-    }
+    alt: "Waste photo preview",
+    className: "scanner-preview"
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 11,
@@ -6237,18 +6179,8 @@ function AIScannerModule() {
       width: '100%'
     }
   }, classifying ? 'Analysing with CLIP...' : 'Analyse with AI')), /*#__PURE__*/React.createElement("div", {
-    className: "card",
-    style: {
-      padding: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontWeight: 700,
-      fontSize: 14,
-      color: PAL.navy,
-      marginBottom: 12
-    }
-  }, "Step 2 - Review scores, verify, and save"), !classifyResults && !classifying && /*#__PURE__*/React.createElement("div", {
+    className: "card workflow-card"
+  }, /*#__PURE__*/React.createElement("h3", null, "Review and verify results"), !classifyResults && !classifying && /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       color: PAL.muted,
@@ -6523,13 +6455,15 @@ function AIScannerModule() {
       fontSize: 11,
       color: '#92400e'
     }
-  }, "⚠ ", /*#__PURE__*/React.createElement("strong", null, "Temporary storage:"), " SQLite on Hugging Face free tier is reset on each Space restart. Export a CSV backup to preserve your observations. Re-import it after a restart to restore records. Scores are CLIP ViT-B/32 cosine similarities — not recyclability probabilities.")));
+  }, /*#__PURE__*/React.createElement("strong", null, "Temporary storage:"), " SQLite on Hugging Face free tier is reset on each Space restart. Export a CSV backup to preserve your observations. Re-import it after a restart to restore records. Scores are CLIP ViT-B/32 cosine similarities — not recyclability probabilities.")));
 }
 
 // ─── BUILDING DASHBOARD ──────────────────────────────────────────────────────
-function BuildingDashboard() {
+function BuildingDashboard({
+  initialBuilding
+}) {
   const [query, setQuery] = useState('');
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(initialBuilding ?? null);
   const ALL_BUILDINGS = Object.entries(REAL_MODEL.site_centroids).map(([name]) => name);
   const topSiteMap = Object.fromEntries(REAL_MODEL.top_sites.map(s => [s.name, s.count]));
   const filtered = query.trim().length < 2 ? ALL_BUILDINGS.slice(0, 30) : ALL_BUILDINGS.filter(b => b.toLowerCase().includes(query.toLowerCase()));
@@ -6855,32 +6789,292 @@ function BuildingDashboard() {
   }, "Showing first 30 of ", ALL_BUILDINGS.length, " buildings. Search to narrow results."));
 }
 
+// State boundaries are derived from US Atlas states-10m (U.S. Census Bureau).
+const ILLINOIS_BOUNDARY = [[[-91.4178, 40.3783], [-91.3747, 40.392], [-91.3819, 40.435], [-91.3676, 40.5123], [-91.407, 40.5424], [-91.3604, 40.6017], [-91.2491, 40.6386], [-91.1845, 40.6377], [-91.1199, 40.673], [-91.1163, 40.7254], [-91.0948, 40.7675], [-91.0912, 40.825], [-91.0553, 40.8482], [-91.005, 40.9049], [-90.9656, 40.9212], [-90.944, 41.0123], [-90.9476, 41.0965], [-90.9943, 41.1609], [-91.0409, 41.1661], [-91.1127, 41.2391], [-91.0732, 41.3052], [-91.0661, 41.3688], [-91.0445, 41.416], [-90.9763, 41.4341], [-90.9297, 41.4212], [-90.8471, 41.4556], [-90.7359, 41.4504], [-90.6497, 41.465], [-90.5923, 41.5131], [-90.5564, 41.5243], [-90.4631, 41.5234], [-90.3985, 41.5724], [-90.341, 41.5904], [-90.3446, 41.6471], [-90.3123, 41.6978], [-90.3123, 41.7425], [-90.28, 41.7674], [-90.1795, 41.8095], [-90.1831, 41.8447], [-90.1544, 41.9066], [-90.1652, 41.9564], [-90.14, 42.0088], [-90.1652, 42.0406], [-90.1616, 42.117], [-90.2082, 42.1523], [-90.3769, 42.215], [-90.4308, 42.2785], [-90.42, 42.3301], [-90.4774, 42.3842], [-90.5564, 42.416], [-90.5636, 42.4383], [-90.6425, 42.4684], [-90.6425, 42.5088], [-90.481, 42.5071], [-89.6662, 42.5053], [-89.4832, 42.501], [-88.7869, 42.4916], [-88.6397, 42.495], [-88.0941, 42.4959], [-87.7998, 42.4916], [-87.807, 42.3851], [-87.8357, 42.3017], [-87.7998, 42.2081], [-87.7244, 42.1076], [-87.6814, 42.0758], [-87.6706, 42.0294], [-87.6239, 41.91], [-87.6096, 41.8456], [-87.5593, 41.7657], [-87.5306, 41.7485], [-87.5234, 41.7081], [-87.527, 41.4899], [-87.527, 40.4625], [-87.5306, 40.2503], [-87.5306, 39.9977], [-87.5342, 39.6464], [-87.5306, 39.3483], [-87.5773, 39.3406], [-87.5988, 39.3131], [-87.606, 39.2615], [-87.5737, 39.2186], [-87.6419, 39.167], [-87.6311, 39.1043], [-87.5737, 39.0571], [-87.5773, 38.9892], [-87.5127, 38.9548], [-87.5521, 38.8595], [-87.4983, 38.7787], [-87.4947, 38.7427], [-87.545, 38.6774], [-87.5952, 38.6671], [-87.6203, 38.6396], [-87.6526, 38.5683], [-87.6526, 38.5116], [-87.7388, 38.4755], [-87.7316, 38.4428], [-87.7783, 38.3707], [-87.807, 38.363], [-87.8536, 38.2753], [-87.8824, 38.3037], [-87.9075, 38.2685], [-87.9254, 38.2985], [-87.9577, 38.2401], [-87.99, 38.2487], [-87.9757, 38.198], [-87.9254, 38.1465], [-88.0044, 38.0838], [-87.9613, 38.1001], [-87.9685, 38.0674], [-88.0367, 38.0511], [-88.008, 38.0288], [-88.0116, 37.9772], [-88.0654, 37.9197], [-88.0116, 37.8948], [-88.0977, 37.9016], [-88.0403, 37.8226], [-88.0834, 37.8303], [-88.069, 37.8011], [-88.0295, 37.7994], [-88.0582, 37.7427], [-88.1193, 37.7126], [-88.1587, 37.6645], [-88.1336, 37.5743], [-88.0618, 37.5159], [-88.0834, 37.473], [-88.2556, 37.4566], [-88.2987, 37.4472], [-88.3633, 37.4025], [-88.4136, 37.4249], [-88.4782, 37.3871], [-88.4854, 37.3398], [-88.5177, 37.284], [-88.5105, 37.2625], [-88.4495, 37.2067], [-88.4243, 37.15], [-88.4602, 37.0735], [-88.5141, 37.0649], [-88.5607, 37.0761], [-88.6289, 37.1208], [-88.7546, 37.1551], [-88.8048, 37.1886], [-88.9161, 37.2247], [-88.9843, 37.229], [-89.0309, 37.211], [-89.0776, 37.1749], [-89.1099, 37.119], [-89.1673, 37.0744], [-89.1817, 37.0271], [-89.1314, 36.9824], [-89.1709, 36.9704], [-89.1996, 37.0159], [-89.2607, 37.0641], [-89.3109, 37.0537], [-89.2571, 37.0151], [-89.293, 36.9919], [-89.3791, 37.04], [-89.3755, 37.0855], [-89.415, 37.125], [-89.4617, 37.1998], [-89.4581, 37.2402], [-89.5191, 37.2857], [-89.4904, 37.3338], [-89.4365, 37.3441], [-89.4222, 37.3974], [-89.5155, 37.5357], [-89.5227, 37.5786], [-89.476, 37.5855], [-89.5155, 37.6439], [-89.5155, 37.6929], [-89.5837, 37.7135], [-89.616, 37.7496], [-89.6662, 37.7522], [-89.6591, 37.7865], [-89.7416, 37.8467], [-89.7955, 37.857], [-89.799, 37.8819], [-89.8457, 37.9059], [-89.8816, 37.8793], [-89.9534, 37.8836], [-89.9749, 37.9265], [-89.9318, 37.9472], [-89.9426, 37.9704], [-90.0, 37.9643], [-90.0611, 38.0159], [-90.0898, 38.0159], [-90.1293, 38.0623], [-90.219, 38.0941], [-90.2908, 38.1705], [-90.3554, 38.2135], [-90.3733, 38.2736], [-90.3697, 38.3406], [-90.3446, 38.3853], [-90.2836, 38.4437], [-90.2621, 38.5287], [-90.1831, 38.6112], [-90.1759, 38.643], [-90.2118, 38.722], [-90.1652, 38.7727], [-90.1221, 38.7976], [-90.1149, 38.8492], [-90.2513, 38.9196], [-90.3087, 38.9239], [-90.4056, 38.9626], [-90.4738, 38.9591], [-90.5061, 38.9024], [-90.5456, 38.875], [-90.5851, 38.8689], [-90.6641, 38.9282], [-90.6748, 38.9841], [-90.7143, 39.0571], [-90.682, 39.088], [-90.7107, 39.155], [-90.7215, 39.2323], [-90.7933, 39.3096], [-91.005, 39.4273], [-91.0625, 39.4737], [-91.102, 39.539], [-91.1486, 39.5459], [-91.1845, 39.6052], [-91.224, 39.6172], [-91.2778, 39.6661], [-91.3712, 39.7323], [-91.3604, 39.7847], [-91.3747, 39.8087], [-91.4286, 39.838], [-91.4465, 39.8706], [-91.4178, 39.9273], [-91.4429, 39.9514], [-91.4932, 40.0364], [-91.5147, 40.1781], [-91.5075, 40.2391], [-91.4465, 40.3628], [-91.4178, 40.3783]]];
+const CAMPUS_CENTER = {
+  lat: 40.105,
+  lon: 88.228
+};
+const CAMPUS_SITES = Object.keys(REAL_MODEL.site_centroids).sort((a, b) => a.localeCompare(b));
+const MAP_SCALES = [66, 7200, 21000];
+const ICON_PATHS = {
+  map: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15 M15 6v15',
+  collection: 'M3 5h12v12H3z M15 9h4l2 4v4h-6 M7 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z M18 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+  scanner: 'M4 7h4l2-3h4l2 3h4v13H4z M16 13a4 4 0 1 0-8 0 4 4 0 0 0 8 0z',
+  buildings: 'M3 21h18 M5 21V6h8v15 M13 21V3h6v18 M8 9h2 M8 13h2 M8 17h2 M16 7h1 M16 11h1 M16 15h1',
+  audits: 'M8 5H5v16h14V5h-3 M8 3h8v5H8z M8 12h8 M8 16h8',
+  overview: 'M4 4v16h16 M8 16v-4 M12 16V7 M16 16v-7 M20 16V5',
+  insights: 'M3 17l6-6 4 4 7-9 M15 6h5v5',
+  nexus: 'M3 4h18v12H8l-5 4z M7 9h10 M7 12h7',
+  pipeline: 'M4 3h6v5H4z M14 16h6v5h-6z M7 8v5h10v3',
+  attribution: 'M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0z M14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0z',
+  reports: 'M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6',
+  settings: 'M4 6h16 M4 12h16 M4 18h16 M8 4v4 M15 10v4 M10 16v4',
+  interventions: 'M12 3v3 M12 18v3 M3 12h3 M18 12h3 M19 12a7 7 0 1 0-14 0 7 7 0 0 0 14 0z',
+  arrow: 'M4 12h15m-6-6 6 6-6 6'
+};
+function NexusIcon({
+  name
+}) {
+  return /*#__PURE__*/React.createElement("svg", {
+    className: "nexus-icon",
+    width: "20",
+    height: "20",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.65",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: ICON_PATHS[name]
+  }));
+}
+function CampusMap({
+  setActive,
+  onOpenBuilding
+}) {
+  const [level, setLevel] = useState(0);
+  const [selected, setSelected] = useState('');
+  const [center, setCenter] = useState(CAMPUS_CENTER);
+  const scale = MAP_SCALES[level];
+  const viewCenter = level === 0 ? {
+    lat: 40.05,
+    lon: 89.05
+  } : center;
+  const project = ({
+    lat,
+    lon
+  }) => [380 + (viewCenter.lon - lon) * scale * 0.766, 225 + (viewCenter.lat - lat) * scale];
+  const [campusX, campusY] = project(CAMPUS_CENTER);
+  const site = REAL_MODEL.site_centroids[selected];
+  const [selectedX, selectedY] = site ? project(site) : [];
+  function zoomToCampus() {
+    setCenter(CAMPUS_CENTER);
+    setLevel(1);
+  }
+  function selectSite(name) {
+    setSelected(name);
+    if (name) {
+      setCenter(REAL_MODEL.site_centroids[name]);
+      setLevel(2);
+    } else {
+      zoomToCampus();
+    }
+  }
+  function handleMarkerKey(event, action) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      action();
+    }
+  }
+  const mapSites = level > 0 ? CAMPUS_SITES.map(name => ({
+    name,
+    point: project(REAL_MODEL.site_centroids[name])
+  })).filter(({
+    point: [x, y]
+  }) => x > 10 && x < 750 && y > 10 && y < 440) : [];
+  const statePath = level === 0 ? ILLINOIS_BOUNDARY.map(ring => ring.map(([lon, lat], i) => (i === 0 ? 'M' : 'L') + project({
+    lat,
+    lon: -lon
+  }).map(n => n.toFixed(1)).join(',')).join('') + 'Z').join(' ') : '';
+  return /*#__PURE__*/React.createElement("div", {
+    className: "campus-page"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "campus-hero",
+    "aria-labelledby": "campus-title"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    className: "campus-eyebrow"
+  }, "UIUC Facilities & Services / IBM AI Builders Challenge"), /*#__PURE__*/React.createElement("h1", {
+    id: "campus-title"
+  }, "EnviroTrap Nexus"), /*#__PURE__*/React.createElement("p", null, "Explore campus waste collection, locate historical pickup sites, and verify materials with the AI Scanner.")), /*#__PURE__*/React.createElement("div", {
+    className: "hero-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-primary",
+    onClick: () => setActive('collection')
+  }, /*#__PURE__*/React.createElement(NexusIcon, {
+    name: "collection"
+  }), " Collection Log"), /*#__PURE__*/React.createElement("button", {
+    className: "btn hero-secondary",
+    onClick: () => setActive('scanner')
+  }, /*#__PURE__*/React.createElement(NexusIcon, {
+    name: "scanner"
+  }), " AI Scanner"))), /*#__PURE__*/React.createElement("section", {
+    className: "card campus-panel",
+    "aria-labelledby": "map-title"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "campus-panel-header"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
+    id: "map-title"
+  }, "Campus map"), /*#__PURE__*/React.createElement("p", null, "Zoom from Illinois to Urbana–Champaign and select a historical LoadMan site.")), /*#__PURE__*/React.createElement("div", {
+    className: "map-modes",
+    "aria-label": "Map view"
+  }, /*#__PURE__*/React.createElement("button", {
+    "aria-pressed": level === 0,
+    onClick: () => setLevel(0)
+  }, "Illinois"), /*#__PURE__*/React.createElement("button", {
+    "aria-pressed": level > 0,
+    onClick: zoomToCampus
+  }, "UIUC campus"))), /*#__PURE__*/React.createElement("div", {
+    className: "campus-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "map-frame"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 760 450",
+    className: "campus-map",
+    "aria-label": level === 0 ? 'Illinois state map' : 'UIUC historical pickup site map'
+  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("pattern", {
+    id: "map-grid",
+    width: "26",
+    height: "26",
+    patternUnits: "userSpaceOnUse"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M26 0H0V26",
+    fill: "none",
+    stroke: "#dbe6ee"
+  }))), /*#__PURE__*/React.createElement("rect", {
+    width: "760",
+    height: "450",
+    fill: "url(#map-grid)"
+  }), level === 0 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("path", {
+    d: statePath,
+    fill: "#d7e5f0",
+    fillRule: "evenodd",
+    stroke: "#7698b0",
+    strokeWidth: "1.5"
+  }), /*#__PURE__*/React.createElement("text", {
+    x: "28",
+    y: "42",
+    className: "map-label"
+  }, "ILLINOIS"), /*#__PURE__*/React.createElement("g", {
+    className: "map-marker",
+    role: "button",
+    tabIndex: "0",
+    "aria-label": "Zoom to UIUC campus",
+    onClick: zoomToCampus,
+    onKeyDown: e => handleMarkerKey(e, zoomToCampus),
+    transform: `translate(${campusX} ${campusY})`
+  }, /*#__PURE__*/React.createElement("circle", {
+    r: "20",
+    fill: "#ff5f05",
+    fillOpacity: ".22"
+  }), /*#__PURE__*/React.createElement("circle", {
+    r: "9",
+    fill: "#ff5f05",
+    stroke: "white",
+    strokeWidth: "2"
+  }), /*#__PURE__*/React.createElement("text", {
+    x: "28",
+    y: "5",
+    className: "map-callout"
+  }, "UIUC"))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("text", {
+    x: "28",
+    y: "42",
+    className: "map-label"
+  }, "URBANA–CHAMPAIGN"), mapSites.filter(({
+    name
+  }) => name !== selected).map(({
+    name,
+    point: [x, y]
+  }) => /*#__PURE__*/React.createElement("circle", {
+    key: name,
+    cx: x,
+    cy: y,
+    r: "5",
+    fill: "#284c70",
+    stroke: "white",
+    strokeWidth: "1.5",
+    className: "map-marker",
+    "aria-label": name,
+    role: "button",
+    tabIndex: "-1",
+    onClick: () => selectSite(name)
+  }, /*#__PURE__*/React.createElement("title", null, name))), site && /*#__PURE__*/React.createElement("circle", {
+    cx: selectedX,
+    cy: selectedY,
+    r: "8",
+    fill: "#ff5f05",
+    stroke: "white",
+    strokeWidth: "2"
+  })), /*#__PURE__*/React.createElement("g", {
+    transform: "translate(710 28)",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("text", {
+    className: "map-label",
+    x: "0",
+    y: "0"
+  }, "N"), /*#__PURE__*/React.createElement("path", {
+    d: "M5 9v24m-6-16 6-8 6 8",
+    fill: "none",
+    stroke: "#36536e",
+    strokeWidth: "1.5"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "map-zoom",
+    "aria-label": "Zoom controls"
+  }, /*#__PURE__*/React.createElement("button", {
+    "aria-label": "Zoom in",
+    disabled: level === 2,
+    onClick: () => setLevel(level + 1)
+  }, "+"), /*#__PURE__*/React.createElement("button", {
+    "aria-label": "Zoom out",
+    disabled: level === 0,
+    onClick: () => setLevel(level - 1)
+  }, "−"))), /*#__PURE__*/React.createElement("div", {
+    className: "campus-details"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "campus-site"
+  }, "Find a campus site"), /*#__PURE__*/React.createElement("select", {
+    id: "campus-site",
+    value: selected,
+    onChange: e => selectSite(e.target.value)
+  }, /*#__PURE__*/React.createElement("option", {
+    value: ""
+  }, "Choose a building"), CAMPUS_SITES.map(name => /*#__PURE__*/React.createElement("option", {
+    key: name
+  }, name)))), /*#__PURE__*/React.createElement("div", {
+    className: "site-detail",
+    "aria-live": "polite"
+  }, site ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, selected), /*#__PURE__*/React.createElement("p", null, site.lat.toFixed(5), "° N, ", site.lon.toFixed(5), "° W"), /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-secondary",
+    onClick: () => onOpenBuilding(selected)
+  }, "View building details ", /*#__PURE__*/React.createElement(NexusIcon, {
+    name: "arrow"
+  }))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("strong", null, CAMPUS_SITES.length, " historical sites"), /*#__PURE__*/React.createElement("p", null, "Campus markers show estimated pickup centroids from LoadMan records."))))), /*#__PURE__*/React.createElement("p", {
+    className: "map-credit"
+  }, "Illinois boundary: U.S. Census Bureau via ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/topojson/us-atlas",
+    target: "_blank",
+    rel: "noreferrer"
+  }, "US Atlas"), ". Campus sites: historical LoadMan model.")));
+}
+
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
 // Primary nav — always visible, F&S-first order
 const PRIMARY_NAV = [{
+  id: 'map',
+  label: 'Campus Map'
+}, {
   id: 'collection',
-  label: 'Collection Log',
-  icon: '🚛'
+  label: 'Collection Log'
+}, {
+  id: 'scanner',
+  label: 'AI Scanner'
 }, {
   id: 'buildings',
-  label: 'Buildings',
-  icon: '🏢'
+  label: 'Buildings'
 }, {
   id: 'audits',
-  label: 'Waste Audits',
-  icon: '📋'
+  label: 'Waste Audits'
 }, {
   id: 'overview',
-  label: 'Waste Explorer',
-  icon: '📊'
+  label: 'Waste Explorer'
 }, {
   id: 'insights',
-  label: 'Insights',
-  icon: '💡'
+  label: 'Insights'
 }, {
   id: 'nexus',
   label: 'Ask Nexus',
-  icon: '💬',
   badge: 'AI'
 }];
 
@@ -6889,33 +7083,23 @@ const SECONDARY_GROUPS = [{
   label: 'Data & Research',
   items: [{
     id: 'pipeline',
-    label: 'Data Pipeline',
-    icon: '🔬'
+    label: 'Data Pipeline'
   }, {
     id: 'attribution',
     label: 'Attribution Engine',
-    icon: '🤖',
     badge: 'AI'
   }, {
     id: 'reports',
-    label: 'Reports',
-    icon: '📄'
+    label: 'Reports'
   }, {
     id: 'settings',
-    label: 'Settings',
-    icon: '⚙️'
+    label: 'Settings'
   }]
 }, {
   label: 'Tools',
   items: [{
-    id: 'scanner',
-    label: 'AI Scanner',
-    icon: '📷',
-    badge: 'AI'
-  }, {
     id: 'interventions',
-    label: 'Interventions',
-    icon: '🎯'
+    label: 'Interventions'
   }]
 }];
 
@@ -6931,17 +7115,16 @@ function NavItem({
     key: item.id,
     onClick: () => setActive(item.id),
     className: 'nav-item ' + (active === item.id ? 'active' : ''),
+    "aria-label": item.label,
+    "aria-current": active === item.id ? 'page' : undefined,
     style: {
       color: active === item.id ? 'white' : '#abc1df',
       fontWeight: active === item.id ? 600 : 400,
       fontSize: 13
     }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 15,
-      flexShrink: 0
-    }
-  }, item.icon), !collapsed && /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement(NexusIcon, {
+    name: item.id
+  }), !collapsed && /*#__PURE__*/React.createElement("span", {
     style: {
       display: 'flex',
       alignItems: 'center',
@@ -6973,16 +7156,7 @@ function Sidebar({
     });
   }
   return /*#__PURE__*/React.createElement("div", {
-    style: {
-      background: PAL.navy,
-      minHeight: '100vh',
-      width: collapsed ? 56 : 230,
-      flexShrink: 0,
-      display: 'flex',
-      flexDirection: 'column',
-      transition: 'width .2s',
-      overflowX: 'hidden'
-    }
+    className: 'app-sidebar' + (collapsed ? ' is-collapsed' : '')
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -6996,7 +7170,7 @@ function Sidebar({
       width: 32,
       height: 32,
       borderRadius: 8,
-      background: PAL.amber,
+      background: '#FF5F05',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -7006,18 +7180,12 @@ function Sidebar({
       flexShrink: 0
     }
   }, "ET"), !collapsed && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontWeight: 700,
-      fontSize: 13,
-      color: '#fff',
-      lineHeight: 1.2
-    }
-  }, "EnviroTrap"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 10,
-      color: '#80a2ce'
-    }
-  }, "Nexus · UIUC F&S")), /*#__PURE__*/React.createElement("button", {
+    className: "brand-name"
+  }, "EnviroTrap Nexus"), /*#__PURE__*/React.createElement("div", {
+    className: "brand-caption"
+  }, "UIUC Facilities & Services")), /*#__PURE__*/React.createElement("button", {
+    "aria-label": collapsed ? 'Expand navigation' : 'Collapse navigation',
+    "aria-expanded": !collapsed,
     onClick: () => setCollapsed(x => !x),
     style: {
       marginLeft: 'auto',
@@ -7030,11 +7198,8 @@ function Sidebar({
       lineHeight: 1
     }
   }, collapsed ? '>' : '<')), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      flex: 1,
-      paddingTop: 6,
-      overflowY: 'auto'
-    }
+    "aria-label": "Main navigation",
+    className: "app-nav"
   }, PRIMARY_NAV.map(function (item) {
     return /*#__PURE__*/React.createElement(NavItem, {
       key: item.id,
@@ -7089,21 +7254,27 @@ function Sidebar({
         collapsed: collapsed
       });
     }));
-  })), !collapsed && /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: '10px 12px',
-      borderTop: '1px solid rgba(255,255,255,.1)',
-      fontSize: 10,
-      color: '#5683be'
-    }
-  }, "v0.6.0 - Phase 2 Navigation"));
+  })));
 }
 
 // ─── APP ROOT ─────────────────────────────────────────────────────────────────
 function App() {
-  const [active, setActive] = useState('collection');
+  const [active, setPage] = useState('map');
+  const [building, setBuilding] = useState(null);
+  function setActive(page) {
+    setBuilding(null);
+    setPage(page);
+  }
+  function openBuilding(name) {
+    setBuilding(name);
+    setPage('buildings');
+  }
   const [collapsed, setCollapsed] = useState(false);
   const PAGES = {
+    map: /*#__PURE__*/React.createElement(CampusMap, {
+      setActive: setActive,
+      onOpenBuilding: openBuilding
+    }),
     overview: /*#__PURE__*/React.createElement(Overview, {
       setActive: setActive
     }),
@@ -7113,7 +7284,10 @@ function App() {
     pipeline: /*#__PURE__*/React.createElement(DataPipeline, null),
     nexus: /*#__PURE__*/React.createElement(AskNexus, null),
     collection: /*#__PURE__*/React.createElement(CollectionLog, null),
-    buildings: /*#__PURE__*/React.createElement(BuildingDashboard, null),
+    buildings: /*#__PURE__*/React.createElement(BuildingDashboard, {
+      key: building,
+      initialBuilding: building
+    }),
     audits: /*#__PURE__*/React.createElement(WasteAudits, null),
     insights: /*#__PURE__*/React.createElement(InsightsEngine, null),
     interventions: /*#__PURE__*/React.createElement(Interventions, null),
@@ -7128,21 +7302,14 @@ function App() {
       minHeight: '100vh'
     }
   }, /*#__PURE__*/React.createElement(DemoBanner, null), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: 'flex',
-      flex: 1
-    }
+    className: "app-layout"
   }, /*#__PURE__*/React.createElement(Sidebar, {
     active: active,
     setActive: setActive,
     collapsed: collapsed,
     setCollapsed: setCollapsed
   }), /*#__PURE__*/React.createElement("main", {
-    style: {
-      flex: 1,
-      overflowY: 'auto',
-      background: '#f8f5ee'
-    }
+    className: "app-main"
   }, PAGES[active] || null)));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
